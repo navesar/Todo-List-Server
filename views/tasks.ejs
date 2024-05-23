@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      color: #007BFF;
+    }
+
+    #task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    #task-list li {
+      background: #fff;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    #task-list li:hover {
+      transform: translateY(-5px);
+    }
+
+    #task-list li ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    #task-list li ul li {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .task-id {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .task-description {
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .task-status {
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .status-waiting {
+      background-color: #ffc107;
+      color: #111;
+    }
+
+    .status-in-progress {
+      background-color: #17a2b8;
+      color: #111;
+    }
+
+    .status-completed {
+      background-color: #28a745;
+      color: #111;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Your <%= tasks.length > 1 ? "Tasks" : "Requested Task" %></h1>
+  <ul id="task-list">
+    <% for (const task of tasks) { %>
+      <li>
+        <ul>
+          <li class="task-id">ID: <%= task.id %></li>
+          <li class="task-description">Description: <%= task.description %></li>
+          <li class="task-status <%= task.status === '1' ? 'status-completed' : task.status === '0' ? 'status-in-progress' : 'status-waiting' %>">
+            Status: <%= task.status === '1' ? 'Completed' : task.status === '0' ? 'In Progress' : 'Waiting' %>
+          </li>
+        </ul>
+      </li>
+    <% } %>
+  </ul>
+</body>
+
+</html>

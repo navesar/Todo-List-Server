@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List Instructions</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+        h1 {
+            text-align: center;
+        }
+        .instructions {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to The Todo List Simple Server!</h1>
+    <div class="instructions">
+        <h2>Instructions:</h2>
+        <p><strong>Note:</strong> Replace <strong>{base_url}</strong> with your actual server URL (e.g., http://localhost:3000).</p>
+
+        <h3>1. Add a Task</h3>
+        <p>Perform a POST request to <strong>{base_url}/addTask</strong> with your task details in the following format:</p>
+        <pre>
+{
+    "description": "Your task description"
+}
+        </pre>
+        <p>A unique ID and a default status of <strong>WAITING (-1)</strong> will be assigned automatically.</p>
+
+        <h3>2. View All Tasks</h3>
+        <p>Perform a GET request to <strong>{base_url}/tasks</strong> to see all tasks in the todo-list.</p>
+
+        <h3>3. View a Specific Task</h3>
+        <p>Perform a GET request to <strong>{base_url}/tasks/{id}</strong> where <strong>{id}</strong> is the ID of the task you want to view.</p>
+
+        <h3>4. Delete a Task</h3>
+        <p>Perform a DELETE request to <strong>{base_url}/deleteTask/{id}</strong> where <strong>{id}</strong> is the ID of the task you want to delete.</p>
+
+        <h3>5. Update a Task Description</h3>
+        <p>Perform a PUT request to <strong>{base_url}/putTask/{id}</strong> where <strong>{id}</strong> is the ID of the task you want to update. The request body should include the new description in the following format:</p>
+        <pre>
+{
+    "description": "Updated task description"
+}
+        </pre>
+        <p>The status will be reset to <strong>WAITING (-1)</strong>.</p>
+
+        <h3>6. Update a Task Status</h3>
+        <p>Perform a PATCH request to <strong>{base_url}/updateStatus/{id}</strong> where <strong>{id}</strong> is the ID of the task you want to update. The request body should include the new status in the following format:</p>
+        <pre>
+{
+    "status": "new status"
+}
+        </pre>
+        <p>Valid status values:</p>
+        <ul>
+            <li><strong>-1</strong>: WAITING</li>
+            <li><strong>0</strong>: IN PROGRESS</li>
+            <li><strong>1</strong>: COMPLETED</li>
+        </ul>
+    </div>
+</body>
+</html>
